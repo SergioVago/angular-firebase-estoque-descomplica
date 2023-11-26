@@ -1,0 +1,21 @@
+<div *ngFor="let product of products$ | async" class="product-item">
+  <div class="product-info">
+    <span>{{ product.name }}</span>
+    <span>Quantidade: {{ product.quantity }}</span>
+  </div>
+  <div class="product-actions">
+    <button (click)="editProduct(product)" class="btn-edit">Editar</button>
+  </div>
+</div>
+
+<div *ngIf="editingProduct" class="edit-product">
+  <input [(ngModel)]="editingProduct.name" placeholder="Novo nome do produto" class="edit-input">
+  <input [(ngModel)]="editingProduct.quantity" type="number" placeholder="Nova quantidade" class="edit-input">
+  <button (click)="updateProduct()" class="btn-update">Atualizar Produto</button>
+</div>
+
+<div class="add-product">
+  <input class="add-input" [(ngModel)]="newProduct.name" placeholder="Nome do produto">
+  <input class="add-input" [(ngModel)]="newProduct.quantity" type="number" placeholder="Quantidade">
+  <button class="btn-add" (click)="addProduct()">Adicionar Produto</button>
+</div>
